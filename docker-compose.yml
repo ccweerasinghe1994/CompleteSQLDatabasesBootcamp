@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17.2
+    container_name: db
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+    volumes:
+      - my-postgres-database:/var/lib/postgresql/data
+      # - ./dbs:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+volumes:
+  my-postgres-database:
